@@ -10,7 +10,7 @@
 
 Platform: VirtualBox. Two network adapters per VM: **NAT** (internet access) and **host-only** (VM-to-VM traffic, 192.168.56.x). Addresses are assigned by DHCP and can change, so I verify with `ip a` before each session.
 
-*(Add a simple diagram image to `/evidence`.)*
+/*(Add a simple diagram image to `/evidence`.)*
 
 ## Tools
 - **Wazuh:** open-source SIEM/XDR (manager, indexer, dashboard, agent)
