@@ -1,4 +1,4 @@
-# IR-002: SSH Brute-Force Attempt Against ubuntu-server
+# SSH Brute-Force Attempt Against ubuntu-server
 
 | Field | Detail |
 |---|---|
