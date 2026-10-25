@@ -1,8 +1,8 @@
-# [Your Name] | SOC Analyst Portfolio
+# AKINRINADE SAMSON OLAOLUWA | SOC Analyst Portfolio
 
 Entry-level SOC analyst candidate with an HND in Statistics, building hands-on detection and investigation skills in a home SIEM lab. I enjoy turning large volumes of log data into clear, evidence-based incident decisions.
 
-📍 [Your City, Country] | 📧 [your.email@example.com] | 🔗 [LinkedIn URL]
+📍 OYO STATE, NIGERIA | 📧 samson.shegun736@gmail.com | 🔗 https://www.linked.com/in/samson-akinrinade-ab255a433/
 
 ---
 
@@ -46,19 +46,7 @@ My statistics background trains me to separate **signal from noise**, spot anoma
 5. **Contain and recommend:** Block, harden, monitor.
 6. **Document and escalate:** Write the report with evidence, verdict, and next steps.
 
----
 
-## Repository structure
-
-```
-├── incident-reports/   Written investigations (IR-001, IR-002)
-├── lab-setup/          Architecture, setup and troubleshooting notes
-├── detections/         Queries and rule logic I used
-├── templates/          Incident report template
-└── evidence/           Sanitized screenshots and log excerpts
-```
-
----
 
 ## Certifications and learning path
 
