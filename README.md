@@ -17,11 +17,10 @@ My statistics background trains me to separate **signal from noise**, spot anoma
 | # | Project | Skills shown | Status |
 |---|---------|--------------|--------|
 | 1 | [Home SOC lab (Wazuh + Splunk + Kali)](lab-setup/README.md) | SIEM deployment, agent onboarding, troubleshooting log sources | ✅ Complete |
-| 2 | [IR-001: Failed SSH logins from loopback](incident-reports/IR-001-ssh-nonexistent-user-self-test.md) | Alert triage, log reading, MITRE mapping, benign closure | ✅ Complete |
-| 3 | [IR-002: SSH brute force from internal host](incident-reports/IR-002-ssh-brute-force.md) | Correlation rules, timeline building, brute force vs spraying, true/false positive reasoning | ✅ Complete |
-| 4 | [Detection notes and queries](detections/README.md) | Wazuh search queries, rule 5710/5712/5715 logic | ✅ Complete |
-| 5 | Wireshark: SSH handshake and traffic analysis | TCP three-way handshake, packet-level evidence | 🔄 In progress |
-| 6 | Splunk searches and dashboard | SPL, stats, timecharts | 🔄 In progress |
+| 2 | [SSH brute force from internal host](incident-reports/ssh-brute-force.md) | Correlation rules, timeline building, brute force vs spraying, true/false positive reasoning | ✅ Complete |
+| 3 | [Detection notes and queries](detections/README.md) | Wazuh search queries, rule 5710/5712/5715 logic | ✅ Complete |
+| 4 | Wireshark: SSH handshake and traffic analysis | TCP three-way handshake, packet-level evidence | 🔄 In progress |
+| 5 | Splunk searches and dashboard | SPL, stats, timecharts | 🔄 In progress |
 
 ---
 
