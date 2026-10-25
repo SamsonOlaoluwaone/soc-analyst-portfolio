@@ -1,4 +1,4 @@
-# IR-001: Failed SSH Logins Using a Non-Existent User (Loopback)
+#Failed SSH Logins Using a Non-Existent User (Loopback)
 
 | Field | Detail |
 |---|---|
