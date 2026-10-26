@@ -32,10 +32,29 @@ A single internal host made repeated failed SSH login attempts against three non
 - Wazuh dashboard displayed times one hour ahead of the server logs (browser UTC+1 vs server UTC). All times in this report are UTC.”
 
 ## Evidence
+
+  ATTACK FROM KALI
+
+  ![kaliattack](../evidence/ssh-attack-from-kali-screenshot.png)
+
+
+  ALERT OF THE ATTACK ON WAZUH 
+
+  ![ALERT](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot)
+  
 ```
 Oct 22 18:07:46 ubuntuserver sshd[63541]: Failed password for invalid user oracle from 192.168.56.106 port 44786 ssh2
 ```
 ![Evidence](../evidence/rawlog.png)
+
+BRUTEFORCE ALERT
+
+![brute](../evidence/ssh-brute-force-alert-screenshot.png)
+
+
+CHECK THERE WAS NO SUCCESFUL LOGIN
+
+![login](../evidence/check-for-a-succesful-login-Screenshot.png)
 
 
 ## Recommended actions (if this were a real external attacker)
