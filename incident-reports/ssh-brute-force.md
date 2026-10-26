@@ -40,7 +40,7 @@ A single internal host made repeated failed SSH login attempts against three non
 
   ALERT OF THE ATTACK ON WAZUH 
 
-  ![ALERT](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot)
+  ![ALERT](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot.png)
   
 ```
 Oct 22 18:07:46 ubuntuserver sshd[63541]: Failed password for invalid user oracle from 192.168.56.106 port 44786 ssh2
@@ -54,7 +54,7 @@ BRUTEFORCE ALERT
 
 CHECK THERE WAS NO SUCCESFUL LOGIN
 
-![login](../evidence/check-for-a-succesful-login-Screenshot.png)
+![login](../evidence/check-for-a-succesful-login-screenshot.png)
 
 
 ## Recommended actions (if this were a real external attacker)
