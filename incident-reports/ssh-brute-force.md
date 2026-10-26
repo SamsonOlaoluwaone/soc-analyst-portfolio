@@ -29,14 +29,15 @@ A single internal host made repeated failed SSH login attempts against three non
 - **Alert count vs. attempts:** events appeared in pairs less than a second apart, so the real attempt count may be lower than 45. *(To verify: count "Failed password" lines in the host's auth log.)*
 - **Outcome:** searched `rule.id: 5715` from this source: **no results**. No successful authentication, no evidence of compromise.
 - **Attribution:** the source is my own Kali VM, run as an authorized lab test.
+- Wazuh dashboard displayed times one hour ahead of the server logs (browser UTC+1 vs server UTC). All times in this report are UTC.”
 
 ## Evidence
 ```
-Oct 22, 2026 @ 19:07:21.815  ubuntu-server  rule 5712 (level 10)
-sshd: brute force trying to get access to the system. Non existent user.
-srcip 192.168.56.106  srcuser oracle
+Oct 22 18:07:46 ubuntuserver sshd[63541]: Failed password for invalid user oracle from 192.168.56.106 port 44786 ssh2
 ```
 *(Add the raw `full_log` line and sanitized screenshots to `/evidence`.)*
+
+(
 
 ## Recommended actions (if this were a real external attacker)
 
@@ -60,3 +61,4 @@ srcip 192.168.56.106  srcuser oracle
 - Repetition changes meaning: single failures are noise, patterns are detections.
 - Always read rule ID and level from the same alert row to avoid reporting errors.
 - Counts need filters: a number is only meaningful with its source, rule, and time range.
+- Confirmed the server time zone with timedatectl before building the timeline, since mismatched time zones can misorder events across systems
