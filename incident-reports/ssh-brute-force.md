@@ -37,7 +37,8 @@ Oct 22 18:07:46 ubuntuserver sshd[63541]: Failed password for invalid user oracl
 ```
 *(Add the raw `full_log` line and sanitized screenshots to `/evidence`.)*
 
-![evidence](evidence/rawlog.png.png)
+<img width="594" height="457" alt="rawlog" src="https://github.com/user-attachments/assets/ce63da1f-0ffd-439b-bf0d-4aa861729c3d" />
+
 
 ## Recommended actions (if this were a real external attacker)
 
