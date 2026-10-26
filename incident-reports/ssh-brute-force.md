@@ -35,7 +35,6 @@ A single internal host made repeated failed SSH login attempts against three non
 ```
 Oct 22 18:07:46 ubuntuserver sshd[63541]: Failed password for invalid user oracle from 192.168.56.106 port 44786 ssh2
 ```
-*(Add the raw `full_log` line and sanitized screenshots to `/evidence`.)*
 ![Evidence](../evidence/rawlog.png)
 
 
