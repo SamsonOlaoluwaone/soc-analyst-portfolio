@@ -54,7 +54,7 @@ BRUTEFORCE ALERT
 
 CHECK THERE WAS NO SUCCESFUL LOGIN
 
-![login](../evidence/check-for-a-succesful-login-screenshot.png)
+![login](../evidence/check-for-a-successful-login-screenshot.png)
 
 
 ## Recommended actions (if this were a real external attacker)
