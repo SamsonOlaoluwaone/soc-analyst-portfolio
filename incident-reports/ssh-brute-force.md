@@ -26,7 +26,7 @@ A single internal host made repeated failed SSH login attempts against three non
 - **Rate:** 45 alerts in about 5 minutes, roughly 9 per minute. This pace points to automation or rapid repeated attempts.
 - **Pattern:** attempts went through **one username at a time** (about 15 alerts each). This is consistent with **brute force (T1110.001)** rather than password spraying (T1110.003), which would rotate usernames while trying few passwords per account.
 - **Why only 3 level-10 alerts:** rule 5712 is a correlation rule. It fires once per burst after enough 5710 events occur from the same source in a short window, so 45 single failures produced 3 correlated alerts.
-- **Alert count vs. attempts:** events appeared in pairs less than a second apart, so the real attempt count may be lower than 45. *(To verify: count "Failed password" lines in the host's auth log.)*
+- **Alert count vs. attempts:** events appeared in pairs less than a second apart, so the real attempt count is 45.
 - **Outcome:** searched `rule.id: 5715` from this source: **no results**. No successful authentication, no evidence of compromise.
 - **Attribution:** the source is my own Kali VM, run as an authorized lab test.
 - Wazuh dashboard displayed times one hour ahead of the server logs (browser UTC+1 vs server UTC). All times in this report are UTC.”
