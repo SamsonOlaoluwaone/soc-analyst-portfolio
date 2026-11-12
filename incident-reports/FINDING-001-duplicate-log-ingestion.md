@@ -11,7 +11,7 @@
 Every SSH log event on ubuntu-server reached Wazuh twice, once from the systemd journal and once from `/var/log/auth.log`. Each event produced duplicate alerts. After removing the redundant source, each event produces exactly one alert.
 
 ## How I found it
-1. For the IR-002 attack, the server logged 24 relevant lines for non-existent-user attempts, but Wazuh showed 48 alerts (45 rule 5710 + 3 rule 5712).
+1. For the IR-001 attack, the server logged 24 relevant lines for non-existent-user attempts, but Wazuh showed 48 alerts (45 rule 5710 + 3 rule 5712).
 2. Identical log lines produced two alerts about 0.5 seconds apart.
 3. The agent config (`/var/ossec/etc/ossec.conf`) listed both sources (`journald` at line 191 and `/var/log/auth.log` at line 215).
 4. Adding the `location` field to alerts showed a 7/7 split between the two sources on an earlier test run, with the same raw line appearing once under each.
