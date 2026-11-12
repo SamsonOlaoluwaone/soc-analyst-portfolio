@@ -1,7 +1,14 @@
 # LAB-001: Packet-Level Analysis of SSH Connections
 
 ## Objective
-Capture and analyse SSH traffic between two lab hosts in order to (1) identify the TCP handshake, open-port, and closed-port patterns, (2) see what a brute-force attempt looks like on the wire, and (3) correlate packet evidence with server logs and SIEM alerts.
+Capture and analyse SSH traffic between two lab hosts in order to 
+
+(1) identify the TCP handshake, open-port, and closed-port patterns 
+
+(2) see what a brute-force attempt looks like on the wire 
+
+(3) correlate packet evidence with server logs and SIEM alerts.
+
 
 ## Environment
 
@@ -13,7 +20,7 @@ Capture and analyse SSH traffic between two lab hosts in order to (1) identify t
 | Tools | Wireshark 4.6.6, `journalctl`, Wazuh dashboard |
 | Display filters | `tcp.port == 22`; `tcp.flags.syn == 1 && tcp.flags.ack == 0` |
 
-All traffic was generated inside an isolated lab. *(Wireshark showed a harmless plugin error about `falco-events.so` at startup; it does not affect packet capture.)*
+All traffic was generated inside an isolated lab.
 
 ## Findings
 
@@ -38,7 +45,20 @@ Command: `ssh admin@192.168.56.109`, one wrong password, then Ctrl+C.
 
 The connection closed gracefully: a `FIN, ACK` exchange followed by a final `ACK`.
 
-*(Screenshots: packet list with the handshake; expanded TCP Flags of packet 24; Flow Graph.)*
+
+# PACKETS LIST WITH THE HANDSHAKE:
+
+  ![handshake](../evidence/lab003-bruteforce.pcapng.png)
+
+
+# EXPANDED TCP FLAGS OF PACKET 24:
+
+ ![handshake](../evidence/ssh-capture-onwireshark-with-flag.png)
+
+
+# FLOW GRAPH:
+ ![flow](../evidence/flow-graph-for-ssh-wireshark-capture.png)
+ 
 
 ### 2. Closed port: connection refused (Lab 2.2)
 Command: `ssh admin@192.168.56.108`, where nothing listens on port 22.
@@ -54,7 +74,9 @@ Command: `ssh admin@192.168.56.108`, where nothing listens on port 22.
 - The terminal reported `Connection refused`: the same event seen from the user's side.
 - The host is reachable, but no service is listening.
 
-*(Screenshot: the two packets in the packet list.)*
+# CONNECTION REFUSE PACKET LIST:
+
+ ![refuse](../evidence/wireshark-ssh-refuse-connection.png)
 
 ### 3. Brute-force pattern on the wire (Lab 2.3)
 Two `ssh test@192.168.56.109` sessions, each with 3 wrong passwords.
@@ -78,7 +100,7 @@ Two `ssh test@192.168.56.109` sessions, each with 3 wrong passwords.
 
 Each connection produced 4 alerting log lines (`Invalid user` plus 3 `Failed password`) and a final `Connection closed by invalid user test ... [preauth]` line, which is the server's record of the teardown. "Preauth" means the connection ended before any authentication succeeded. Each log line produced two Wazuh alerts because of duplicate log ingestion that existed at the time (see FINDING-001); the fix was applied later. In total the two connections produced 16 alerts from 8 log lines, split exactly 8 from `journald` and 8 from `/var/log/auth.log`.
 
-*(Add: Wazuh screenshot of the alerts with the `location` column.)*
+
 
 ## Comparison of packet patterns
 
@@ -89,8 +111,14 @@ Each connection produced 4 alerting log lines (`Invalid user` plus 3 `Failed pas
 | Brute force (this lab) | Repeated complete connections to one port | Permission denied | Many sessions to one service |
 | Filtered port / port scan | *Not captured in this lab* | Timeout | Expected: silence, or SYNs to many ports |
 
-## Link to IR-002
-The packet evidence adds three points to the SIEM view. First, it shows the activity as separate connections (one handshake per `ssh` command), which explains why alert counts exceed attempt counts. Second, it independently confirms the source host and port. Third, it shows the limit of network visibility: the SIEM could name the usernames only because it read host logs, since the packets are encrypted.
+## Link to IR-001
+The packet evidence adds three points to the SIEM view. 
+
+First, it shows the activity as separate connections (one handshake per `ssh` command), which explains why alert counts exceed attempt counts. 
+
+Second, it independently confirms the source host and port. 
+
+Third, it shows the limit of network visibility: the SIEM could name the usernames only because it read host logs, since the packets are encrypted.
 
 ## Additional observations
 1. **Banner exposure:** the server's plain-text banner discloses its software and version (`SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.18`), which scanners use for reconnaissance.
