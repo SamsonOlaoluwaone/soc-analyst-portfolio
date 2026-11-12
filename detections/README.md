@@ -6,7 +6,7 @@
 |---|---|---|---|
 | 5710 | 5 | sshd: Attempt to login using a non-existent user | Single event |
 | 5712 | 10 | sshd: brute force trying to get access to the system. Non existent user. | **Correlation** (repeated failures from one source in a short window) |
-| 5715 | - | sshd: authentication success | Used to check whether an attack **succeeded** |
+| 5715 | 3 | sshd: authentication success | Used to check whether an attack **succeeded** |
 | 5760 | 5 | sshd: authentication failed | Failed password for an **existing** account |
 | 5763 | 10 | sshd: brute force trying to get access to the system. Authentication failed. | Correlation for existing accounts |
 | 5503 | 5 | PAM: User login failed | PAM authentication failure line |
@@ -14,7 +14,6 @@
 | 2502 | 10 | syslog: User missed the password more than one time | `PAM n more authentication failures` line |
 | 5402 | 3 | Successful sudo to ROOT executed | Audit trail of privileged commands |
 
-*(Add the level for 5715 from your own dashboard under Rules.)*
 
 ## Field names (check an expanded alert first)
 - `data.srcuser`: targeted account when it does **not** exist
