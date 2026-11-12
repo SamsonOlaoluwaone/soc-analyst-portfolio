@@ -62,6 +62,10 @@ $ sudo journalctl -u ssh --since "2026-10-22 18:00" --until "2026-10-22 18:10" |
 $ sudo sshd -T | grep -i permitrootlogin
 permitrootlogin without-password
 ```
+# LAUNCHING OF ATTACK FROM KALI
+
+ ![attack](../evidence/ssh-attack-from-kali-screenshot.png)
+
 
  ![sshbruteforce](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot.png)
 
