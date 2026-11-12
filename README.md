@@ -15,13 +15,12 @@ My statistics background trains me to separate **signal from noise**, spot anoma
 | # | Project | Skills shown | Status |
 |---|---------|--------------|--------|
 | 1 | [Home SOC lab (Wazuh + Splunk + Kali)](lab-setup/README.md) | SIEM deployment, agent onboarding, troubleshooting log sources | ✅ Complete |
-| 2 | [IR-001: Failed SSH logins from loopback](incident-reports/IR-001-ssh-nonexistent-user-self-test.md) | Alert triage, log reading, MITRE mapping, benign closure | ✅ Complete |
-| 3 | [IR-002: SSH brute force from internal host (revised)](incident-reports/IR-002-ssh-brute-force.md) | Correlation rules, timeline building, brute force vs spraying, reconciling alert counts with raw logs | ✅ Complete |
-| 4 | [FINDING-001: Duplicate log ingestion](incident-reports/FINDING-001-duplicate-log-ingestion.md) | Log-source validation, change management (backup, fix, verify, rollback) | ✅ Resolved and verified |
-| 5 | [FINDING-002: Clock synchronization failure](incident-reports/FINDING-002-clock-synchronization.md) | Time-sync diagnosis, evidence integrity, measuring offsets across systems | ✅ Resolved and verified |
-| 6 | [Detection notes and queries](detections/README.md) | Wazuh queries, rule 5710/5712/5760/5763 logic, field names | ✅ Complete |
-| 7 | [LAB-001: Packet-level analysis of SSH](labs/LAB-001-ssh-packet-analysis.md) | Wireshark, TCP handshake, open vs. closed ports, correlating packets with logs and SIEM | ✅ Complete (screenshots pending) |
-| 8 | Splunk searches and dashboard | SPL, stats, timecharts | 🔄 In progress |
+| 2 | [IR-001: SSH brute force from internal host (revised)](incident-reports/IR-002-ssh-brute-force.md) | Correlation rules, timeline building, brute force vs spraying, reconciling alert counts with raw logs | ✅ Complete |
+| 3 | [FINDING-001: Duplicate log ingestion](incident-reports/FINDING-001-duplicate-log-ingestion.md) | Log-source validation, change management (backup, fix, verify, rollback) | ✅ Resolved and verified |
+| 4 | [FINDING-002: Clock synchronization failure](incident-reports/FINDING-002-clock-synchronization.md) | Time-sync diagnosis, evidence integrity, measuring offsets across systems | ✅ Resolved and verified |
+| 5 | [Detection notes and queries](detections/README.md) | Wazuh queries, rule 5710/5712/5760/5763 logic, field names | ✅ Complete |
+| 6 | [LAB-001: Packet-level analysis of SSH](labs/LAB-001-ssh-packet-analysis.md) | Wireshark, TCP handshake, open vs. closed ports, correlating packets with logs and SIEM | ✅ Complete (screenshots pending) |
+| 7 | Splunk searches and dashboard | SPL, stats, timecharts | 🔄 In progress |
 
 ---
 
@@ -47,18 +46,6 @@ My statistics background trains me to separate **signal from noise**, spot anoma
 5. **Contain and recommend:** Block, harden, monitor.
 6. **Document and escalate:** Write the report with evidence (UTC times), verdict, and next steps.
 
----
-
-## Repository structure
-
-```
-├── incident-reports/   Written investigations (IR-001, IR-002, FINDING-001, FINDING-002)
-├── labs/               Hands-on lab reports (Wireshark, etc.)
-├── lab-setup/          Architecture, setup and troubleshooting notes
-├── detections/         Queries and rule logic I used
-├── templates/          Incident report template
-└── evidence/           Sanitized screenshots and log excerpts
-```
 
 ---
 
