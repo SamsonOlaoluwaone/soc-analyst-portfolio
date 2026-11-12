@@ -1,6 +1,5 @@
-# IR-002: SSH Brute-Force Attempt Against ubuntu-server (Revised)
+# IR-001: SSH Brute-Force Attempt Against ubuntu-server
 
-*Revision note: the first version of this report filtered on one Wazuh rule (5710) and missed the attempts against the real account `root`. This revision searches by source IP and server log, and reconciles the alert counts. All times are **UTC** (server time).*
 
 | Field | Detail |
 |---|---|
@@ -30,11 +29,11 @@ One internal host opened 8 SSH connections to ubuntu-server and made 24 failed p
 
 ## Analysis
 
-**Pattern.** Attempts went through one account at a time, 6 failed passwords each over 2 connections. This is brute force (T1110.001), not password spraying (T1110.003), which would rotate accounts with few tries each.
+**Pattern:** Attempts went through one account at a time, 6 failed passwords each over 2 connections. This is brute force (T1110.001), not password spraying (T1110.003), which would rotate accounts with few tries each.
 
-**Rate.** 24 attempts in about 5 minutes. The activity is consistent with scripted or rapid manual attempts.
+**Rate:** 24 attempts in about 5 minutes. The activity is consistent with scripted or rapid manual attempts.
 
-**The one real account.** Attempts against `root` matter most because they could in principle succeed. They did not:
+**The one real account:** Attempts against `root` matter most because they could possibly succeed. But They did not:
 - No `Accepted` line in the server log for 18:00 to 18:10 UTC.
 - `sshd -T` shows `permitrootlogin without-password`: password login for root is disabled, so password guesses could not succeed.
 
@@ -63,21 +62,23 @@ $ sudo journalctl -u ssh --since "2026-10-22 18:00" --until "2026-10-22 18:10" |
 $ sudo sshd -T | grep -i permitrootlogin
 permitrootlogin without-password
 ```
-*(Add sanitized Wazuh screenshots to `/evidence`.)*
+
+ ![sshbruteforce](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot.png)
 
 ## Recommended actions (if this were a real external attacker)
 
-**Immediate**
+**Immediately**
 1. Block the source IP at the firewall.
 2. Check all hosts for successful logins (rule 5715 / "Accepted") from that IP over the last 24 hours.
 3. Review `root` activity and any key-based logins in the window.
 
-**Preventive**
-4. Keep root password login disabled; disable SSH password authentication for all accounts and use keys.
-5. Install fail2ban; restrict port 22 to known management IPs (`ufw`).
+**Preventive measure**
+1. Keep root password login disabled; disable SSH password authentication for all accounts and use keys.
+2. Install fail2ban; restrict port 22 to known management IPs (`ufw`).
 
 **Escalation**
-6. In production, escalate to the server owner if the source is external or any login succeeded.
+
+In production, escalate to the server owner if the source is external or any login succeeded.
 
 ## Lessons learned
 1. **Search by source, not by rule.** Filtering on rule 5710 hid the `root` attempts; searching the source IP and `full_log` exposed them.
