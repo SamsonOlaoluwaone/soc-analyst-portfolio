@@ -66,6 +66,7 @@ permitrootlogin without-password
 
  ![attack](../evidence/ssh-attack-from-kali-screenshot.png)
 
+# WAZUH DETECTION
 
  ![sshbruteforce](../evidence/alert-of-the-ssh-attack-on-wazuh-screenshot.png)
 
